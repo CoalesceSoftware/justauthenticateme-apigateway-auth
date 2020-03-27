@@ -1,0 +1,41 @@
+{
+  "name": "justauthenticateme-apigateway-auth",
+  "version": "0.0.1",
+  "description": "AWS API Gateway Custom Authorizer for https://www.justauthenticate.me",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "author": "Grant Orndorff",
+  "license": "MIT",
+  "keywords": [
+    "justauthenticateme",
+    "authentication",
+    "auth",
+    "serverless",
+    "apigateway",
+    "lambda"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint"
+    }
+  },
+  "devDependencies": {
+    "husky": "^4.0.6",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.5",
+    "justauthenticateme-node": "^1.0.0"
+  }
+}
