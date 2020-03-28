@@ -39,7 +39,7 @@ const authHandler = (
 
     const { Authorization } = event.headers;
     if (!Authorization) {
-      return unauthorized;
+      throw unauthorized;
     }
     // cut off "Bearer "
     const idToken = Authorization.substring(7);
@@ -48,7 +48,7 @@ const authHandler = (
       const email = await jam.verify(idToken);
       return createPolicy(email, resource, true, { email });
     } catch (err) {
-      return unauthorized;
+      throw unauthorized;
     }
   };
   return handler;
