@@ -1,6 +1,8 @@
 import { CustomAuthorizerHandler, CustomAuthorizerResult } from "aws-lambda";
 import JustAuthenticateMe from "justauthenticateme-node";
 
+const unauthorized = "Unauthorized";
+
 const createPolicy = (
   principalId: string,
   resource: string,
@@ -37,7 +39,7 @@ const authHandler = (
 
     const { Authorization } = event.headers;
     if (!Authorization) {
-      return createPolicy("unknown", resource, false, {});
+      return unauthorized;
     }
     // cut off "Bearer "
     const idToken = Authorization.substring(7);
@@ -46,7 +48,7 @@ const authHandler = (
       const email = await jam.verify(idToken);
       return createPolicy(email, resource, true, { email });
     } catch (err) {
-      return createPolicy("unknown", resource, false, {});
+      return unauthorized;
     }
   };
   return handler;
