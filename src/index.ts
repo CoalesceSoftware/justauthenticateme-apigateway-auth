@@ -5,7 +5,6 @@ const unauthorized = "Unauthorized";
 
 const createPolicy = (
   principalId: string,
-  resource: string,
   allow: boolean,
   context: any
 ): CustomAuthorizerResult => {
@@ -18,7 +17,7 @@ const createPolicy = (
         {
           Action: "execute-api:Invoke",
           Effect: allow ? "Allow" : "Deny",
-          Resource: resource
+          Resource: "*"
         }
       ]
     }
@@ -35,8 +34,6 @@ const authHandler = (
   const handler: CustomAuthorizerHandler = async (
     event
   ): CustomAuthorizerResult => {
-    const resource = event.methodArn;
-
     const { Authorization } = event.headers;
     if (!Authorization) {
       throw unauthorized;
@@ -46,7 +43,7 @@ const authHandler = (
 
     try {
       const email = await jam.verify(idToken);
-      return createPolicy(email, resource, true, { email });
+      return createPolicy(email, true, { email });
     } catch (err) {
       console.error(err);
       throw unauthorized;
