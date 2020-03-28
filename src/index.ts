@@ -49,6 +49,7 @@ const authHandler = (
       return createPolicy("unknown", resource, false, {});
     }
   };
+  return handler;
 };
 
 export default authHandler;
