@@ -37,17 +37,20 @@ const authHandler = (
   ): CustomAuthorizerResult => {
     const resource = event.methodArn;
 
+    console.log("headers", event.headers);
     const { Authorization } = event.headers;
     if (!Authorization) {
       throw unauthorized;
     }
     // cut off "Bearer "
     const idToken = Authorization.substring(7);
+    console.log("idToken", idToken);
 
     try {
       const email = await jam.verify(idToken);
       return createPolicy(email, resource, true, { email });
     } catch (err) {
+      console.error(err);
       throw unauthorized;
     }
   };
