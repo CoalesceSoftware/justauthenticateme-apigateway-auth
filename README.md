@@ -51,7 +51,7 @@ When configuring the authorizer, be sure to select the `REQUEST` type.
 #### Sending requests
 
 When sending requests to endpoints that are protected by this authorizer, include the ID token you get from JustAuthenticateMe in
-the `Authorization` header after the keywork `Bearer`. It should look something like this:
+the `Authorization` header after the keyword `Bearer`. It should look something like this:
 
 ```
 Authorization: Bearer eyJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjJlYjQwMTA0LWRjNDUtNGYzNy1iNjljLTkzN2I2Mzg2YjlmNiJ9.eyJlbWFpbCI6InN1cHBvcnRAanVzdGF1dGhlbnRpY2F0ZS5tZSIsInN1YiI6InN1cHBvcnRAanVzdGF1dGhlbnRpY2F0ZS5tZSIsImF1ZCI6ImIxOWEyMWI0LWFkOWQtNGZkNy04OGMxLTFiNjhiODI1YzY3MSIsImlzcyI6Imh0dHBzOi8vZGV2LWFwaS5qdXN0YXV0aGVudGljYXRlLm1lL2IxOWEyMWI0LWFkOWQtNGZkNy04OGMxLTFiNjhiODI1YzY3MSIsImp0aSI6IjZhMjJjOTEyLWYwMzYtNGU0Mi1iZjM5LTQ3N2ZhM2ExOGY2ZCIsInRva2VuX3VzZSI6ImlkIiwiaWF0IjoxNTgzNjk1NDM5LCJuYmYiOjE1ODM2OTU0MzksImV4cCI6MTU4MzY5NzIzOX0.AZqvVWSXn4zwP4WhYOL-nQEDDEMa4Cmpyx8HGJ-6uc3wLeZVfvil6RyAlUExnd6JpteaAImOrKo5fnv93SSGkP-eAN9igGRg0GmXpIeGno_sY_4rMLXDa6RtABL1lz5LCYMxD79oIYIflWJ-LVqmCF90msq-PysFZcgKVLa8oki8ZlKI
