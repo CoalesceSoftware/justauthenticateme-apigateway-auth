@@ -1,6 +1,6 @@
 {
   "name": "justauthenticateme-apigateway-auth",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "AWS API Gateway Custom Authorizer for https://www.justauthenticate.me",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
